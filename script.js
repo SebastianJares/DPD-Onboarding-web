@@ -160,7 +160,8 @@ async function updateFormStatus(recordId, newStatus) {
             alert(`Chyba při aktualizaci stavu: ${result.message}`);
             const checkbox = document.querySelector(`[data-record-id="${recordId}"]`);
             if (checkbox) {
-                checkbox.checked = !event.target.checked; 
+                // Vrátí checkbox do původního stavu před pokusem o změnu
+                checkbox.checked = (newStatus === ''); 
             }
         }
     } catch (error) {
@@ -168,7 +169,8 @@ async function updateFormStatus(recordId, newStatus) {
         alert(`Nepodařilo se aktualizovat stav: ${error.message}`);
         const checkbox = document.querySelector(`[data-record-id="${recordId}"]`);
         if (checkbox) {
-            checkbox.checked = !event.target.checked; 
+            // Vrátí checkbox do původního stavu před pokusem o změnu
+            checkbox.checked = (newStatus === '');
         }
     }
 }
